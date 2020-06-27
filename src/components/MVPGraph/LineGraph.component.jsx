@@ -29,6 +29,7 @@ function LineGraph({ originalData, predictedData }) {
 				width={1000}
 				height={500}
 				style={{ parent: { marginLeft: '2em' } }}
+				animate={{duration: 500}}
 				containerComponent={
 					// <VictoryZoomContainer
 					// responsive={false}
