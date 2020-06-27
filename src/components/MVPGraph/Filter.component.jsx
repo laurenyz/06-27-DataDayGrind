@@ -21,8 +21,8 @@ function Filter({ filteredKeys, currentFilterTerm, currentFilterTermSet }) {
 				{filteredKeys.map((filterTerm, index) => {
 					return (
 						<option value={filterTerm} key={index}>
-							{filterTerm}
-						</option>
+                            {filterTerm.replace(/([A-Z]+)*([A-Z][a-z])/g, "$1 $2").toUpperCase()}
+                        </option>
 					);
 				})}
 			</Select>

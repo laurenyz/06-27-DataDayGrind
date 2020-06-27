@@ -8,10 +8,10 @@ function Regression({ mappedData }) {
 	const resultlinear = regression.linear(data);
 	console.log('linear equation:', resultlinear.string, resultlinear.r2, resultlinear);
 	const resultexponetial = regression.exponential(data);
-	console.log('exponention equation:', resultexponetial.string, resultexponetial.r2);
+	console.log('exponentional equation:', resultexponetial.string, resultexponetial.r2, resultexponetial);
 	let graphTypeName;
 	let graph;
-	if (Math.abs(resultlinear.r2) > Math.abs(resultexponetial)) {
+	if (Math.abs(resultlinear.r2) > Math.abs(resultexponetial) || isNaN(resultexponetial.r2)) {
 		graphTypeName = 'Linear';
 		graph = resultlinear;
 	} else {
