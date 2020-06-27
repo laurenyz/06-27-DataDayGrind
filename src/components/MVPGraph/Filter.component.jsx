@@ -9,20 +9,12 @@ function Filter({ filteredKeys, currentFilterTerm, currentFilterTermSet }) {
 
 	return (
 		<div>
-			<Select
-				native
-				value={currentFilterTerm}
-				onChange={handleChange}
-				inputProps={{
-					name: 'age',
-					id: 'age-native-simple'
-				}}
-			>
+			<Select native value={currentFilterTerm} onChange={handleChange}>
 				{filteredKeys.map((filterTerm, index) => {
 					return (
 						<option value={filterTerm} key={index}>
-                            {filterTerm.replace(/([A-Z]+)*([A-Z][a-z])/g, "$1 $2").toUpperCase()}
-                        </option>
+							{filterTerm.replace(/([A-Z]+)*([A-Z][a-z])/g, '$1 $2').toUpperCase()}
+						</option>
 					);
 				})}
 			</Select>
