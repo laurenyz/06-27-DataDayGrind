@@ -25,10 +25,10 @@ function Navbar(){
             <AppBar position="static"> 
                 <Toolbar>
                     <TimelineIcon style={{marginRight: "5px"}} />
-                    <Typography>VisuGraph</Typography>
+                    <Typography>CovidTracer</Typography>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Typography>www.VisuGraph.com</Typography>
+                            <Typography>www.CovidTracer.com</Typography>
                         </Grid>
                     </Grid>
                 </Toolbar>
