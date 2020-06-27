@@ -1,20 +1,67 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
+import { VictoryChart, VictoryZoomContainer, VictoryLine, VictoryAxis, VictoryLabel } from 'victory';
 
-const xAxis = { title: 'Dates', increments: 10, min: '01/01/2020', max: '06/30/2020' };
-const yXais = { title: 'Deaths', increments: 100, min: 0, max: 10000 };
-const data = [
-	{ xAxis: 0, yAxis: 100 },
-	{ xAxis: 10, yAxis: 200 },
-	{ xAxis: 20, yAxis: 400 },
-	{ xAxis: 30, yAxis: 500 }
-];
-const equationPoints = [
-	{ xAxis: 0, yAxis: 100 },
-	{ xAxis: 10, yAxis: 200 },
-	{ xAxis: 20, yAxis: 400 },
-	{ xAxis: 30, yAxis: 500 }
-];
 
-function LineGraph({ data, equationPoints, xAxis, yAxis }) {
-	return <div />;
+class LineGraph extends Component {
+	constructor() {
+        super();
+        this.state= {}
+    }
+    
+    handleZoom(domain) {
+        this.setState({
+            selectedDomain: domain
+        })
+    }
+
+    handleBrush(domain) {
+        this.setState({
+            zoomDomain: domain
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <VictoryChart 
+                width={500}
+                height={300}
+                style={{parent: {marginLeft: '2em'}}}
+                scale={{x: 'time'}}
+                containerComponent={
+                    <VictoryZoomContainer 
+                    responsive={false}
+                    zoomDimension='x'
+                    zoomDomain={this.state.zoomDomain}
+                    onZoomDomainChange={this.handleZoom.bind(this)}
+                    />
+                }
+                >
+                <VictoryLine 
+                style={{fill: 'tomato'}}
+                data={[
+                    {x: new Date(1982, 1, 1), y: 125},
+                    {x: new Date(1987, 1, 1), y: 257},
+                    {x: new Date(1993, 1, 1), y: 345},
+                    {x: new Date(1997, 1, 1), y: 515},
+                    {x: new Date(2001, 1, 1), y: 132},
+                    {x: new Date(2005, 1, 1), y: 305},
+                    {x: new Date(2011, 1, 1), y: 270},
+                    {x: new Date(2015, 1, 1), y: 470}
+                  ]}
+                />
+                <VictoryAxis dependentAxis
+                label="I Don't Know"
+                axisLabelComponent={<VictoryLabel dy={-12}/>}
+                />
+                <VictoryAxis 
+                label='Year'
+                />
+                </VictoryChart>
+            </div>
+        );
+    }
 }
+
+export default LineGraph;
+

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataProcess from './DataProcess.component';
+import LineGraph from './LineGraph.component';
 
 function Board({ url }) {
 	const [ fetchResult, fetchResultSet ] = useState(undefined);
@@ -19,7 +20,10 @@ function Board({ url }) {
 	) : !fetchResult[0] ? (
 		<div>Data Load Error</div>
 	) : (
-		<DataProcess data={fetchResult} />
+		<div>
+			<DataProcess data={fetchResult} />
+			<LineGraph data={fetchResult}/>
+		</div>
 	);
 }
 
