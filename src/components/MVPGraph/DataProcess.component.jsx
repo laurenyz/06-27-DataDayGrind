@@ -5,6 +5,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import GraphCard from './GraphCard.component';
 import Select from '@material-ui/core/Select';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 function DataProcess({ data }) {
 	const [ currentFilterTerm, currentFilterTermSet ] = useState('positive');
@@ -59,11 +64,19 @@ function DataProcess({ data }) {
 							/>
 						</Grid>
 						<Grid item>
-							<Select native value={currentGraphType} onChange={handleChange}>
+						<FormControl component="fieldset">
+							<FormLabel component="legend">Graph Type</FormLabel>
+							<RadioGroup aria-label="gender" name="gender1" value={currentGraphType} onChange={handleChange}>
+								<FormControlLabel value={'scatter'} control={<Radio />} label="Scatter" />
+								<FormControlLabel value={'line'} control={<Radio />} label="Line" />
+								<FormControlLabel value={'bar'} control={<Radio />} label="Bar" />
+							</RadioGroup>
+						</FormControl>
+							{/* <Select native value={currentGraphType} onChange={handleChange}>
 								<option value={'scatter'}>Scatter</option>
 								<option value={'line'}>Line</option>
 								<option value={'bar'}>Bar</option>
-							</Select>
+							</Select> */}
 						</Grid>
 						<Grid item>
 							<GraphCard />
