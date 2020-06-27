@@ -50,20 +50,20 @@ function DataProcess({ data }) {
 		hospitalizedCurrently: 'Currently Hospitalized Cases',
 		hospitalizedCumulative: 'Cumulative Hospitalized Cases',
 		inIcuCurrently: 'Currently in ICU',
-		inIcuCumulative: 'Cumulative Cases ',
+		inIcuCumulative: 'Cumulative Cases in ICU ',
 		onVentilatorCurrently: 'Cases Currently on Ventilator',
-		onVentilatorCumulative: 'Cummulative Cases on Ventilator'
-		// 9: "recovered"​
-		// 10: "death" ​
-		// 11: "hospitalized"
-		// 12: "total"
-		// 13: "totalTestResults"
-		// 14: "posNeg"
-		// 15: "deathIncrease"​
-		// 16: "hospitalizedIncrease"
-		// 17: "negativeIncrease"
-		// 18: "positiveIncrease"
-		// 19: "totalTestResultsIncrease"
+		onVentilatorCumulative: 'Cummulative Cases on Ventilator',
+		recovered: 'Recovered Cases',
+		death: 'Total Deaths',
+		hospitalized: 'Total Hospitalized',
+		total: 'Total Cases',
+		totalTestResults: 'Total Test Results',
+		posNeg: 'Combined Total of Positive and Negative Cases',
+		deathIncrease: 'Increase in Death Rate',
+		hospitalizedIncrease: 'Increase in Hospitalization',
+		negativeIncrease: 'Increase in Negative Cases',
+		positiveIncrease: 'Increase in Positive Cases',
+		totalTestResultsIncrease: 'Increase in Total Test Results'
 	};
 
 	return (
@@ -84,7 +84,13 @@ function DataProcess({ data }) {
 					<Grid container direction="column" spacing={2}>
 						<Grid item>
 							<FormControl component="fieldset">
-								<RadioGroup row aria-label="gender" name="gender1" value={currentGraphType} onChange={handleChange}>
+								<RadioGroup
+									row
+									aria-label="gender"
+									name="gender1"
+									value={currentGraphType}
+									onChange={handleChange}
+								>
 									<FormControlLabel value={'scatter'} control={<Radio />} label="Scatter" />
 									<FormControlLabel value={'line'} control={<Radio />} label="Line" />
 									<FormControlLabel value={'bar'} control={<Radio />} label="Bar" />
