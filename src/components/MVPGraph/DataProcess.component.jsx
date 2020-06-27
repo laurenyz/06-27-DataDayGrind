@@ -18,7 +18,9 @@ function DataProcess({ data }) {
 	const [ currentGraphResult, currentGraphResultSet ] = useState({});
 
 	let possibleKeys = Object.keys(data[0]);
-	let filteredKeys = possibleKeys.filter((key) => typeof data[0][key] === 'number' && key !== 'date');
+	let filteredKeys = possibleKeys.filter(
+		(key) => typeof data[0][key] === 'number' && key !== 'date' && key !== 'states'
+	);
 
 	const mappedData = data
 		.map((dataObj) => {
@@ -40,12 +42,34 @@ function DataProcess({ data }) {
 	const handleChange = (e) => {
 		currentGraphTypeSet(e.target.value);
 	};
-
-	console.log(currentGraphResult);
+	console.log(filteredKeys);
+	const namedTitles = {
+		positive: 'Confirmed Cumulative Positive Cases',
+		negative: 'Negative Cases',
+		pending: 'Pending Cases',
+		hospitalizedCurrently: 'Currently Hospitalized Cases',
+		hospitalizedCumulative: 'Cumulative Hospitalized Cases',
+		inIcuCurrently: 'Currently in ICU'
+		// 6: "inIcuCumulative"
+		// 7: "onVentilatorCurrently" ​
+		// 8: "onVentilatorCumulative"
+		// 9: "recovered"​
+		// 10: "death" ​
+		// 11: "hospitalized"
+		// 12: "total"
+		// 13: "totalTestResults"
+		// 14: "posNeg"
+		// 15: "deathIncrease"​
+		// 16: "hospitalizedIncrease"
+		// 17: "negativeIncrease"
+		// 18: "positiveIncrease"
+		// 19: "totalTestResultsIncrease"
+	};
 
 	return (
 		<div>
-			<Typography variant="h3">ENTER TITLE OF GRAPH HERE</Typography>
+			<Typography variant="h3">{namedTitles[currentFilterTerm]}</Typography>
+			<Typography variant="h5">For the United States</Typography>
 			<Grid container direction="row" spacing={2} style={{ marginTop: '20px' }}>
 				<Grid item xs={8}>
 					<Regression
@@ -66,14 +90,14 @@ function DataProcess({ data }) {
 							/>
 						</Grid>
 						<Grid item>
-						<FormControl component="fieldset">
-							<FormLabel component="legend">Graph Type</FormLabel>
-							<RadioGroup aria-label="gender" name="gender1" value={currentGraphType} onChange={handleChange}>
-								<FormControlLabel value={'scatter'} control={<Radio />} label="Scatter" />
-								<FormControlLabel value={'line'} control={<Radio />} label="Line" />
-								<FormControlLabel value={'bar'} control={<Radio />} label="Bar" />
-							</RadioGroup>
-						</FormControl>
+							<FormControl component="fieldset">
+								<FormLabel component="legend">Graph Type</FormLabel>
+								<RadioGroup aria-label="gender" name="gender1" value={currentGraphType} onChange={handleChange}>
+									<FormControlLabel value={'scatter'} control={<Radio />} label="Scatter" />
+									<FormControlLabel value={'line'} control={<Radio />} label="Line" />
+									<FormControlLabel value={'bar'} control={<Radio />} label="Bar" />
+								</RadioGroup>
+							</FormControl>
 							{/* <Select native value={currentGraphType} onChange={handleChange}>
 								<option value={'scatter'}>Scatter</option>
 								<option value={'line'}>Line</option>
@@ -81,7 +105,7 @@ function DataProcess({ data }) {
 							</Select> */}
 						</Grid>
 						<Grid item>
-							<GraphCard />
+							<GraphCard graphResult={currentGraphResult} />
 						</Grid>
 					</Grid>
 				</Grid>
