@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { VictoryChart, VictoryZoomContainer, VictoryLine, VictoryAxis, VictoryLabel, VictoryVoronoiContainer, VictoryTooltip } from 'victory';
+import { VictoryBar, VictoryScatter, VictoryChart, VictoryZoomContainer, VictoryLine, VictoryAxis, VictoryLabel, VictoryVoronoiContainer, VictoryTooltip } from 'victory';
 
 
 class LineGraph extends Component {
@@ -36,7 +36,7 @@ class LineGraph extends Component {
 					// />,
 					<VictoryVoronoiContainer 
 					voronoiDimension='x'
-					labels={({datum}) => `${datum.childName}: ${datum.y}`}
+					labels={({datum}) => `${datum.childName}: ${Math.floor(datum.y * 10000)}`}
 					labelComponent={<VictoryTooltip
 					cornerRadius={0}
 					flyoutStyle={{fill: 'white'}}
@@ -44,8 +44,9 @@ class LineGraph extends Component {
 					/>
                 }
                 >
-                <VictoryLine 
-				style={{data: {stroke: 'blue'}, labels: {fill: 'blue'}}}
+                <VictoryBar
+				size={2}
+				style={{data: {fill: 'blue'}, labels: {fill: 'blue'}}}
 				name={'Actual'}
                 data={this.props.originalData}
                 />
