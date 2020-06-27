@@ -33,7 +33,7 @@ function DataProcess({ data }) {
 				currentFilterTermSet={currentFilterTermSet}
 				filteredKeys={filteredKeys}
 			/>
-			<Regression mappedData={mappedData} />
+			<Regression mappedData={mappedData} currentFilterTerm={currentFilterTerm} />
 		</div>
 	);
 }
