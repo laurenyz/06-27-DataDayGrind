@@ -67,8 +67,8 @@ function DataProcess({ data }) {
 
 	return (
 		<div>
-			<Typography variant="h3">{namedTitles[currentFilterTerm]}</Typography>
-			<Typography variant="h5">For the United States</Typography>
+			<Typography style={{color: "#424242"}} variant="h3">{namedTitles[currentFilterTerm]}</Typography>
+			<Typography style={{color: "#424242"}} variant="h5">For the United States</Typography>
 			<Grid container direction="row" spacing={2} style={{ marginTop: '20px' }}>
 				<Grid item xs={8}>
 					<Paper variant="outlined">
@@ -87,6 +87,7 @@ function DataProcess({ data }) {
 							<FormControl component="fieldset">
 								<RadioGroup
 									row
+									style={{color: "#424242"}}
 									aria-label="gender"
 									name="gender1"
 									value={currentGraphType}

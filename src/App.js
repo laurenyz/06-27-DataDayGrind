@@ -13,12 +13,14 @@ const useStyles = makeStyles((theme) => ({
 	  display: "block",
 	  position: "relative",
 	  paddingBottom: "100px",
+	  backgroundColor: "#e0e0e0"
 	},
 	main: {
+	  marginTop: "20px",
 	  paddingLeft: "20px",
 	  paddingRight: "20px",
 	  paddingTop: "20px",
-	  textAlign: "center"
+	  textAlign: "center",
 	}
   }));
 
