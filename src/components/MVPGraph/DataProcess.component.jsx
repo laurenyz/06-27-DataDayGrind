@@ -88,6 +88,7 @@ function DataProcess({ data }) {
 								currentFilterTermSet={currentFilterTermSet}
 								filteredKeys={filteredKeys}
 							/>
+<<<<<<< HEAD
 						</Grid>
 						<Grid item>
 							<FormControl component="fieldset">
@@ -103,6 +104,8 @@ function DataProcess({ data }) {
 								<option value={'line'}>Line</option>
 								<option value={'bar'}>Bar</option>
 							</Select> */}
+=======
+>>>>>>> added-label
 						</Grid>
 						<Grid item>
 							<GraphCard graphResult={currentGraphResult} />
