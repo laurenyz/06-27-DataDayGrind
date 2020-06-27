@@ -1,5 +1,9 @@
 import React from 'react';
 import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
 
 function Filter({ filteredKeys, currentFilterTerm, currentFilterTermSet }) {
 	const handleChange = (e) => {
@@ -9,7 +13,8 @@ function Filter({ filteredKeys, currentFilterTerm, currentFilterTermSet }) {
 
 	return (
 		<div>
-			<Select native value={currentFilterTerm} onChange={handleChange}>
+	  		<InputLabel style={{marginBottom:"5x"}} id="demo-simple-select-helper-label">Select Data Type</InputLabel>
+			<Select style={{marginBottom:"20x"}} native value={currentFilterTerm} onChange={handleChange}>
 				{filteredKeys.map((filterTerm, index) => {
 					return (
 						<option value={filterTerm} key={index}>
