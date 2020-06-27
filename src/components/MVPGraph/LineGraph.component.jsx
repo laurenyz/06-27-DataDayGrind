@@ -58,21 +58,21 @@ function LineGraph({ originalData, predictedData, currentFilterTerm }) {
 				{graphType === 'line' ? (
 					<VictoryLine
 						size={2}
-						style={{ data: { stroke: 'blue' }, labels: { fill: 'blue' } }}
+						style={{ data: { stroke: '#1167b1' }, labels: { fill: '#1167b1' } }}
 						name={'Actual'}
 						data={originalData}
 					/>
 				) : graphType === 'bar' ? (
 					<VictoryBar
 						size={2}
-						style={{ data: { fill: 'blue' }, labels: { fill: 'blue' } }}
+						style={{ data: { fill: '#1167b1' }, labels: { fill: '#1167b1' } }}
 						name={'Actual'}
 						data={originalData}
 					/>
 				) : (
 					<VictoryScatter
 						size={2}
-						style={{ data: { fill: 'blue' }, labels: { fill: 'blue' } }}
+						style={{ data: { fill: '#1167b1' }, labels: { fill: '#1167b1' } }}
 						name={'Actual'}
 						data={originalData}
 					/>
