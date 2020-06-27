@@ -49,10 +49,10 @@ function DataProcess({ data }) {
 		pending: 'Pending Cases',
 		hospitalizedCurrently: 'Currently Hospitalized Cases',
 		hospitalizedCumulative: 'Cumulative Hospitalized Cases',
-		inIcuCurrently: 'Currently in ICU'
-		// 6: "inIcuCumulative"
-		// 7: "onVentilatorCurrently" ​
-		// 8: "onVentilatorCumulative"
+		inIcuCurrently: 'Currently in ICU',
+		inIcuCumulative: 'Cumulative Cases ',
+		onVentilatorCurrently: 'Cases Currently on Ventilator',
+		onVentilatorCumulative: 'Cummulative Cases on Ventilator'
 		// 9: "recovered"​
 		// 10: "death" ​
 		// 11: "hospitalized"
