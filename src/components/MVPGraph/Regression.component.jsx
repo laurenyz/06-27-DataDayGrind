@@ -1,8 +1,9 @@
 import React from 'react'
 import regression from 'regression'
 
-function Regression(){
-    const data = [[0, 1], [32, 67], [12, 79]]
+function Regression(props){
+    // const data = [[0, 1], [32, 67], [12, 79]]
+    const data = props.mappedData
     const resultlinear = regression.linear(data)
     console.log("linear equation:", resultlinear.string, resultlinear.r2, resultlinear)
     const resultexponetial = regression.exponential(data)
