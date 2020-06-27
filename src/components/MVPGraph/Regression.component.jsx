@@ -2,7 +2,7 @@ import React from 'react';
 import regression from 'regression';
 import LineGraph from './LineGraph.component';
 
-function Regression({ mappedData, currentFilterTerm }) {
+function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGraphTypeSet }) {
 	// const data = [[0, 1], [32, 67], [12, 79]]
 	const data = mappedData;
 	const resultlinear = regression.linear(data);
@@ -38,6 +38,8 @@ function Regression({ mappedData, currentFilterTerm }) {
 					return { x: data[0], y: data[1] / 10000 };
 				})}
 				currentFilterTerm={currentFilterTerm}
+				currentGraphType={currentGraphType}
+				currentGraphTypeSet={currentGraphTypeSet}
 			/>
 		</div>
 	);

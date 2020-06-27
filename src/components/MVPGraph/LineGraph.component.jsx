@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Select from '@material-ui/core/Select';
+
 import {
 	VictoryBar,
 	VictoryScatter,
@@ -12,10 +12,9 @@ import {
 	VictoryTooltip
 } from 'victory';
 
-function LineGraph({ originalData, predictedData, currentFilterTerm }) {
+function LineGraph({ originalData, predictedData, currentFilterTerm, currentGraphType, currentGraphTypeSet }) {
 	const [ selectedDomain, selectedDomainSet ] = useState(undefined);
 	const [ zoomDomain, zoomDomainSet ] = useState(undefined);
-	const [ graphType, graphTypeSet ] = useState('scatter');
 
 	const handleZoom = (domain) => {
 		selectedDomainSet(domain);
@@ -25,19 +24,8 @@ function LineGraph({ originalData, predictedData, currentFilterTerm }) {
 		zoomDomainSet(domain);
 	};
 
-	const handleChange = (e) => {
-		graphTypeSet(e.target.value);
-	};
-
 	return (
 		<div>
-			<div>
-				<Select native value={graphType} onChange={handleChange}>
-					<option value={'scatter'}>Scatter</option>
-					<option value={'line'}>Line</option>
-					<option value={'bar'}>Bar</option>
-				</Select>
-			</div>
 			<VictoryChart
 				width={1000}
 				height={500}
@@ -50,19 +38,19 @@ function LineGraph({ originalData, predictedData, currentFilterTerm }) {
 					// onZoomDomainChange={handleZoom}
 					// />,
 					<VictoryVoronoiContainer
-						labels={ ({ datum }) => `Day: ${datum.x} \n ${datum.childName}: ${Math.floor(datum.y * 10000) }`}
+						labels={({ datum }) => `Day: ${datum.x} \n ${datum.childName}: ${Math.floor(datum.y * 10000)}`}
 						labelComponent={<VictoryTooltip />}
 					/>
 				}
 			>
-				{graphType === 'line' ? (
+				{currentGraphType === 'line' ? (
 					<VictoryLine
 						size={2}
 						style={{ data: { stroke: '#1167b1' }, labels: { fill: '#1167b1' } }}
 						name={'Actual'}
 						data={originalData}
 					/>
-				) : graphType === 'bar' ? (
+				) : currentGraphType === 'bar' ? (
 					<VictoryBar
 						size={2}
 						style={{ data: { fill: '#1167b1' }, labels: { fill: '#1167b1' } }}
@@ -85,7 +73,9 @@ function LineGraph({ originalData, predictedData, currentFilterTerm }) {
 				/>
 				<VictoryAxis
 					dependentAxis
-					label={`Number of ${currentFilterTerm} Cases (x 10,000)`}
+					label={`Number of ${currentFilterTerm
+						.replace(/([A-Z]+)*([A-Z][a-z])/g, '$1 $2')
+						.toUpperCase()} Cases (x 10,000)`}
 					axisLabelComponent={<VictoryLabel dy={-12} />}
 				/>
 				<VictoryAxis label="Day" />
