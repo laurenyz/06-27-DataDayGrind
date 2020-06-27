@@ -15,7 +15,7 @@ function DataProcess({ data }) {
 	const [ currentFilterTerm, currentFilterTermSet ] = useState('positive');
 
 	const [ currentGraphType, currentGraphTypeSet ] = useState('scatter');
-	const [ currentGraph, currentGraphSet ] = useState({});
+	const [ currentGraphResult, currentGraphResultSet ] = useState({});
 
 	let possibleKeys = Object.keys(data[0]);
 	let filteredKeys = possibleKeys.filter((key) => typeof data[0][key] === 'number' && key !== 'date');
@@ -40,7 +40,9 @@ function DataProcess({ data }) {
 	const handleChange = (e) => {
 		currentGraphTypeSet(e.target.value);
 	};
-	console.log('Mapped Data:', mappedData);
+
+	console.log(currentGraphResult);
+
 	return (
 		<div>
 			<Typography variant="h3">ENTER TITLE OF GRAPH HERE</Typography>
@@ -48,7 +50,7 @@ function DataProcess({ data }) {
 				<Grid item xs={8}>
 					<Regression
 						mappedData={mappedData}
-						currentGraphSet={currentGraphSet}
+						currentGraphResultSet={currentGraphResultSet}
 						currentFilterTerm={currentFilterTerm}
 						currentGraphType={currentGraphType}
 						currentGraphTypeSet={currentGraphTypeSet}

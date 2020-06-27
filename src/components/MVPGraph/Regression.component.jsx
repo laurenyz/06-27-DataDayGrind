@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import regression from 'regression';
 import LineGraph from './LineGraph.component';
 
-function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGraphTypeSet }) {
+function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGraphTypeSet, currentGraphResultSet }) {
 	// const data = [[0, 1], [32, 67], [12, 79]]
 	const data = mappedData;
 	const resultlinear = regression.linear(data);
-	console.log('linear equation:', resultlinear.string, resultlinear.r2, resultlinear);
+	// console.log('linear equation:', resultlinear.string, resultlinear.r2, resultlinear);
 	const resultexponetial = regression.exponential(data);
-	console.log('exponentional equation:', resultexponetial.string, resultexponetial.r2, resultexponetial);
+	// console.log('exponentional equation:', resultexponetial.string, resultexponetial.r2, resultexponetial);
 	let graphTypeName;
 	let graph;
 	if (Math.abs(resultlinear.r2) > Math.abs(resultexponetial) || isNaN(resultexponetial.r2)) {
@@ -19,6 +19,11 @@ function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGr
 		graph = resultexponetial;
 		graph = resultexponetial;
 	}
+
+	useEffect(() => {
+		let data = [ { type: 'Linear', result: resultlinear }, { type: 'Exponential', result: resultexponetial } ];
+		currentGraphResultSet(data);
+	}, []);
 
 	return (
 		<div>
