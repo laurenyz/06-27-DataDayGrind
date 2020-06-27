@@ -42,7 +42,6 @@ function LineGraph({ originalData, predictedData, currentFilterTerm }) {
 				width={1000}
 				height={500}
 				style={{ parent: { marginLeft: '2em' } }}
-				animate={{duration: 500}}
 				containerComponent={
 					// <VictoryZoomContainer
 					// responsive={false}
@@ -51,9 +50,8 @@ function LineGraph({ originalData, predictedData, currentFilterTerm }) {
 					// onZoomDomainChange={handleZoom}
 					// />,
 					<VictoryVoronoiContainer
-						voronoiDimension="x"
-						labels={({ datum }) => `${datum.childName}: ${Math.floor(datum.y * 10000)}`}
-						labelComponent={<VictoryTooltip cornerRadius={0} flyoutStyle={{ fill: 'white' }} />}
+						labels={ ({ datum }) => `Day: ${datum.x} \n ${datum.childName}: ${Math.floor(datum.y * 10000) }`}
+						labelComponent={<VictoryTooltip />}
 					/>
 				}
 			>
