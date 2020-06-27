@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
 	  paddingBottom: "100px",
 	},
 	main: {
-	  paddingLeft: "0px",
-	  paddingRight: "0px",
+	  paddingLeft: "20px",
+	  paddingRight: "20px",
 	  paddingTop: "20px",
 	  textAlign: "center"
 	}

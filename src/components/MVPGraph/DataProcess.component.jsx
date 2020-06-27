@@ -4,12 +4,11 @@ import Filter from './Filter.component';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import GraphCard from './GraphCard.component';
-import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import Paper from '@material-ui/core/Paper';
 
 function DataProcess({ data }) {
 	const [ currentFilterTerm, currentFilterTermSet ] = useState('positive');
@@ -72,13 +71,15 @@ function DataProcess({ data }) {
 			<Typography variant="h5">For the United States</Typography>
 			<Grid container direction="row" spacing={2} style={{ marginTop: '20px' }}>
 				<Grid item xs={8}>
-					<Regression
-						mappedData={mappedData}
-						currentGraphResultSet={currentGraphResultSet}
-						currentFilterTerm={currentFilterTerm}
-						currentGraphType={currentGraphType}
-						currentGraphTypeSet={currentGraphTypeSet}
-					/>
+					<Paper variant="outlined">
+						<Regression
+							mappedData={mappedData}
+							currentGraphResultSet={currentGraphResultSet}
+							currentFilterTerm={currentFilterTerm}
+							currentGraphType={currentGraphType}
+							currentGraphTypeSet={currentGraphTypeSet}
+						/>
+					</Paper>
 				</Grid>
 				<Grid item xs={4}>
 					<Grid container direction="column" spacing={2}>
@@ -105,7 +106,9 @@ function DataProcess({ data }) {
 							/>
 						</Grid>
 						<Grid item>
-							<GraphCard graphResult={currentGraphResult} />
+							<Paper variant="outlined">
+								<GraphCard graphResult={currentGraphResult} />
+							</Paper>
 						</Grid>
 					</Grid>
 				</Grid>
