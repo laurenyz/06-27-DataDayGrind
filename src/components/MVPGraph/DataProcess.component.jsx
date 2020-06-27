@@ -58,27 +58,21 @@ function DataProcess({ data }) {
 				</Grid>
 				<Grid item xs={4}>
 					<Grid container direction="column" spacing={2}>
+					<Grid item>
+						<FormControl component="fieldset">
+							<RadioGroup row aria-label="gender" name="gender1" value={currentGraphType} onChange={handleChange}>
+								<FormControlLabel value={'scatter'} control={<Radio />} label="Scatter" />
+								<FormControlLabel value={'line'} control={<Radio />} label="Line" />
+								<FormControlLabel value={'bar'} control={<Radio />} label="Bar" />
+							</RadioGroup>
+						</FormControl>
+						</Grid>
 						<Grid item>
 							<Filter
 								currentFilterTerm={currentFilterTerm}
 								currentFilterTermSet={currentFilterTermSet}
 								filteredKeys={filteredKeys}
 							/>
-						</Grid>
-						<Grid item>
-						<FormControl component="fieldset">
-							<FormLabel component="legend">Graph Type</FormLabel>
-							<RadioGroup aria-label="gender" name="gender1" value={currentGraphType} onChange={handleChange}>
-								<FormControlLabel value={'scatter'} control={<Radio />} label="Scatter" />
-								<FormControlLabel value={'line'} control={<Radio />} label="Line" />
-								<FormControlLabel value={'bar'} control={<Radio />} label="Bar" />
-							</RadioGroup>
-						</FormControl>
-							{/* <Select native value={currentGraphType} onChange={handleChange}>
-								<option value={'scatter'}>Scatter</option>
-								<option value={'line'}>Line</option>
-								<option value={'bar'}>Bar</option>
-							</Select> */}
 						</Grid>
 						<Grid item>
 							<GraphCard />
