@@ -1,5 +1,6 @@
 import React from 'react';
 import regression from 'regression';
+import LineGraph from './LineGraph.component'
 
 function Regression({ mappedData }) {
 	// const data = [[0, 1], [32, 67], [12, 79]]
@@ -27,6 +28,10 @@ function Regression({ mappedData }) {
 			<h3>Equation: {graph.string}</h3>
 			<h3>Points: {graph.points.forEach((point) => `(${point[0]},${point[1]})`)}</h3>
 			<h3>Prediction: {graph.predict(300)}</h3>
+			<LineGraph 
+			originalData={mappedData.map(data => {return {x: data[0], y: data[1]/10000}})}
+			predictedData={graph.points.map(data => {return {x: data[0], y: data[1]/10000}})}
+			/>
 		</div>
 	);
 }
