@@ -23,7 +23,7 @@ function LineGraph({ originalData, predictedData, currentFilterTerm, currentGrap
 	const handleBrush = (domain) => {
 		zoomDomainSet(domain);
 	};
-	console.log(originalData);
+	console.log(currentFilterTerm);
 	return (
 		<div>
 			<VictoryChart

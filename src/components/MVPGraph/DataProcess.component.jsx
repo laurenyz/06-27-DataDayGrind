@@ -51,7 +51,7 @@ function DataProcess({ data, region, fetchProps }) {
 	};
 
 	const namedTitles = {
-		positive: 'Confirmed Cumulative Positive Cases',
+		positive: 'Positive Cases',
 		negative: 'Negative Cases',
 		pending: 'Pending Cases',
 		hospitalizedCurrently: 'Currently Hospitalized Cases',
@@ -70,7 +70,10 @@ function DataProcess({ data, region, fetchProps }) {
 		hospitalizedIncrease: 'Increase in Hospitalization',
 		negativeIncrease: 'Increase in Negative Cases',
 		positiveIncrease: 'Increase in Positive Cases',
-		totalTestResultsIncrease: 'Increase in Total Test Results'
+		totalTestResultsIncrease: 'Increase in Total Test Results',
+		positiveCasesViral: 'Positive Viral Cases',
+		negativeCasesViral: 'Negative Viral Cases',
+		totalTestsViral: 'Total Viral Tests'
 	};
 
 	return (
