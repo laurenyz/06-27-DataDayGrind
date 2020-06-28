@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles"
 
 import './App.css';
 import Board from './components/MVPGraph/Board.component';

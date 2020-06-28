@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+@font-face {
+  font-family: 'rockwellregular';
+  src: url('./assets/rockwen-webfont.woff2') format('woff2'),
+       url('./assets/rockwen-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
