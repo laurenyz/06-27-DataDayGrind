@@ -101,15 +101,15 @@ function DataProcess({ data, region, fetchProps }) {
 					<Grid justify='space-between' container direction="column" spacing={3}>
 
 						<Grid item>
-						<Paper variant="outlined">
+						{/* <Paper variant="outlined" style={{padding: "10px"}}> */}
 							<FetchSelector {...fetchProps} />
-						</Paper>
+						{/* </Paper> */}
 						</Grid>
 
 						<Grid item>
 
 						
-						<Paper variant="outlined">
+						<Paper variant="outlined" style={{padding: "10px"}}>
 						<Grid item>
 							<Filter
 								currentFilterTerm={currentFilterTerm}
@@ -138,7 +138,7 @@ function DataProcess({ data, region, fetchProps }) {
 						</Grid>
 
 						<Grid item>
-							<Paper variant="outlined">
+							<Paper variant="outlined" style={{padding: "10px"}}>
 								<GraphCard graphResult={currentGraphResult} />
 							</Paper>
 						</Grid>

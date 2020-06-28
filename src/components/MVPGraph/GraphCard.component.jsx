@@ -28,7 +28,7 @@ function GraphCard({ graphResult }) {
 		}
 
 		return (
-			<div style={{ marginBottom: '20px' }}>
+			<div>
 				<Typography>Graph Type: {type}</Typography>
 				<div>
 					<StaticMathField>{`r^2 = ${chosen.r2}`}</StaticMathField>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataProcess from './DataProcess.component';
 import Resources from './Resources.component';
+import Grid from '@material-ui/core/Grid'
 
 function Board({ url, region, fetchProps, abbrv }) {
 	const [ fetchResult, fetchResultSet ] = useState(undefined);
@@ -28,10 +29,18 @@ function Board({ url, region, fetchProps, abbrv }) {
 		<div>Data Load Error</div>
 	) : (
 		<div>
-			<DataProcess data={fetchResult} region={region} fetchProps={fetchProps} />
-			{region !== 'United States' ? (
-				<Resources stateData={stateInfo.filter((obj) => obj.state === abbrv)[0]} />
-			) : null}
+			<Grid container direction="column" spacing = {2}>
+				<Grid item>
+				<DataProcess data={fetchResult} region={region} fetchProps={fetchProps} />
+				</Grid>
+				{region !== 'United States' ? (
+					<Grid item>
+						<Resources stateData={stateInfo.filter((obj) => obj.state === abbrv)[0]} />
+					</Grid>
+				) : null}
+			</Grid>
+			
+			
 		</div>
 	);
 }
