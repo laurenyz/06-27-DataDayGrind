@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import regression from 'regression';
 import LineGraph from './LineGraph.component';
 import Typography from '@material-ui/core/Typography'
@@ -13,7 +13,6 @@ function Regression({
 	daysFromNow
 }) {
 	// const data = [[0, 1], [32, 67], [12, 79]]
-	const [prediction, predictionSet] = useState(null)
 	const data = mappedData;
 	const resultlinear = regression.linear(data);
 	// console.log('linear equation:', resultlinear.string, resultlinear.r2, resultlinear);
@@ -22,23 +21,16 @@ function Regression({
 	// eslint-disable-next-line
 	let graphTypeName;
 	let graph;
-	let predictionVar
+	let prediction
+	let days = isNaN(daysFromNow)? 0 : daysFromNow
 	if (Math.abs(resultlinear.r2) > Math.abs(resultexponetial) || isNaN(resultexponetial.r2)) {
 		graphTypeName = 'Linear';
 		graph = resultlinear;
-		predictionVar = resultlinear.predict(data[0][0]+daysFromNow)
-		console.log(typeof data[0][0])
-		console.log(typeof daysFromNow)
-		// predictionSet(predictionVar)
-		// console.log(predictionVar)
+		prediction = resultlinear.predict(data[0][0]+days)
 	} else {
 		graphTypeName = 'Exponential';
 		graph = resultexponetial;
-		predictionVar = resultexponetial.predict(mappedData[0][0]+daysFromNow)
-		console.log(typeof data[0][0])
-		console.log(typeof daysFromNow)
-		// predictionSet(predictionVar)
-		// console.log(predictionVar)
+		prediction = resultexponetial.predict(mappedData[0][0]+days)
 	}
 
 	var now = new Date();
@@ -54,7 +46,6 @@ function Regression({
 		// eslint-disable-next-line
 		[ currentFilterTerm, region ]
 	);
-	console.log(predictionVar[1])
 	return (
 		
 		<div>
@@ -73,7 +64,7 @@ function Regression({
 				currentGraphType={currentGraphType}
 				currentGraphTypeSet={currentGraphTypeSet}
 			/>
-			<Typography style={{margin:"20px"}}>Prediction of {daysFromNow} day(s) from now: {Math.floor(predictionVar[1])}</Typography>
+			<Typography style={{margin:"20px"}}>Prediction of {days} day(s) from now: {Math.floor(prediction[1])}</Typography>
 		</div>
 	);
 }
