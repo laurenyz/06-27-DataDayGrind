@@ -166,7 +166,7 @@ function DataProcess({ data, region, fetchProps }) {
 								<TextField
 										variant="outlined"
 										margin="normal"
-										style={{padding:"10px"}}
+										style={{padding:"10px", width: '50%'}}
 										id="days-from-now"
 										label="Days-From-Now"
 										step="1"
