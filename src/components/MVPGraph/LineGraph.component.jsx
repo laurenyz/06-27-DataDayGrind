@@ -12,7 +12,7 @@ import {
 } from 'victory';
 
 const changeDate = (day) => {
-	let someDate = new Date();
+	let someDate = new Date(2020, 0, 1);
 	someDate.setDate(someDate.getDate() + day)
 	let dd = someDate.getDate();
 	let mm = someDate.getMonth() + 1;
@@ -79,7 +79,7 @@ function LineGraph({ originalData, predictedData, currentFilterTerm, currentGrap
 						tickLabels: { color: '#595959' },
 						axisLabel: { paddingTop: 30, fontSize: '20px', fontWeight: 'bold' }
 					}}
-					label="Day"
+					label="Days Since Janary 23rd, 2020"
 				/>
 			</VictoryChart>
 		</div>

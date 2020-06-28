@@ -32,7 +32,6 @@ function DataProcess({ data, region, fetchProps }) {
 	const mappedData = data
 		.map((dataObj) => {
 			let date = new Date(dataObj.dateChecked);
-			console.log(new Date)
 			function daysIntoYear(date) {
 				return (
 					(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) /
