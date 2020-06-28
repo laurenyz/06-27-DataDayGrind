@@ -162,32 +162,24 @@ function App() {
 		stateViewSet(true);
 	};
 
+	const fetchProps = {
+		handleCountryClick: handleCountryClick,
+		selectedState: selectedState,
+		handleChange: handleChange
+	};
+
 	return (
 		<div className={classes.root}>
 			<Navbar />
-			<div>
-				<Button variant="contained" onClick={handleCountryClick}>
-					USA
-				</Button>
-				<Select style={{ marginBottom: '20x' }} native value={selectedState} onChange={handleChange}>
-					<option value={''}>STATES</option>
-					{states.map((state, index) => {
-						return (
-							<option value={state} key={index}>
-								{state}
-							</option>
-						);
-					})}
-				</Select>
-			</div>
 			<Container className={classes.main}>
 				{stateView ? (
 					<Board
 						url={`https://covidtracking.com/api/v1/states/${selectedState.toLowerCase()}/daily.json`}
 						region={stateTitle[selectedState]}
+						fetchProps={fetchProps}
 					/>
 				) : (
-					<Board url={url} region="United States" />
+					<Board url={url} region="United States" fetchProps={fetchProps} />
 				)}
 			</Container>
 		</div>

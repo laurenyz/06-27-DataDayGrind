@@ -9,17 +9,17 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
+import FetchSelector from './FetchSelector.component';
 
-function DataProcess({ data, region }) {
+function DataProcess({ data, region, fetchProps }) {
 	const [ currentFilterTerm, currentFilterTermSet ] = useState('positive');
 
 	const [ currentGraphType, currentGraphTypeSet ] = useState('scatter');
 	const [ currentGraphResult, currentGraphResultSet ] = useState({});
 
 	let possibleKeys = Object.keys(data[0]);
-	let filteredKeys = possibleKeys.filter(
-		(key) => typeof data[0][key] === 'number' && key !== 'date' && key !== 'states'
-	);
+	let noGoKeys = [ 'positiveScore', 'states', 'date' ];
+	let filteredKeys = possibleKeys.filter((key) => typeof data[0][key] === 'number' && !noGoKeys.includes(key));
 
 	const mappedData = data
 		.map((dataObj) => {
@@ -88,6 +88,16 @@ function DataProcess({ data, region }) {
 				<Grid item xs={4}>
 					<Grid container direction="column" spacing={2}>
 						<Grid item>
+							<FetchSelector {...fetchProps} />
+						</Grid>
+						<Grid item>
+							<Filter
+								currentFilterTerm={currentFilterTerm}
+								currentFilterTermSet={currentFilterTermSet}
+								filteredKeys={filteredKeys}
+							/>
+						</Grid>
+						<Grid item>
 							<FormControl component="fieldset">
 								<RadioGroup
 									row
@@ -103,13 +113,7 @@ function DataProcess({ data, region }) {
 								</RadioGroup>
 							</FormControl>
 						</Grid>
-						<Grid item>
-							<Filter
-								currentFilterTerm={currentFilterTerm}
-								currentFilterTermSet={currentFilterTermSet}
-								filteredKeys={filteredKeys}
-							/>
-						</Grid>
+
 						<Grid item>
 							<Paper variant="outlined">
 								<GraphCard graphResult={currentGraphResult} />
