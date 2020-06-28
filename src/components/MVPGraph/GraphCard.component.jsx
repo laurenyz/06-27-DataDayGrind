@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { addStyles, StaticMathField } from 'react-mathquill'
+import Typography from '@material-ui/core/Typography'
+
+addStyles()
 
 function GraphCard({ graphResult }) {
 	const [ graphCard, graphCardSet ] = useState(undefined);
@@ -26,10 +30,14 @@ function GraphCard({ graphResult }) {
 		console.log(chosen);
 
 		return (
-			<div>
-				<h2>Graph Type: {type} </h2>
-				<h3>R^2: {chosen.r2}</h3>
-				<h3>{chosen.string}</h3>
+			<div style={{marginBottom:"20px"}}>
+				<Typography>Graph Type: {type}</Typography>
+				<div>
+				<StaticMathField>{`r^2 = ${chosen.r2}`}</StaticMathField>
+				</div>
+				<div>
+				{type==="Linear"?<StaticMathField>{`y = ${chosen.equation[0]}x+${chosen.equation[1]}`}</StaticMathField>:<StaticMathField>{`y = ${chosen.equation[0]}x^{\n${chosen.equation[1]}}`}</StaticMathField>}
+				</div>
 			</div>
 		);
 	} else {
