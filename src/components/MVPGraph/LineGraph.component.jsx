@@ -76,16 +76,19 @@ function LineGraph({ originalData, predictedData, currentFilterTerm, currentGrap
 					label={`Number of ${currentFilterTerm
 						.replace(/([A-Z]+)*([A-Z][a-z])/g, '$1 $2')
 						.toUpperCase()} Cases (x 10,000)`}
-					axisLabelComponent={<VictoryLabel style={{margin: '20em'}}/>}
+					axisLabelComponent={<VictoryLabel style={{ margin: '20em' }} />}
 					style={{
-						tickLabels: {angle: -45, paddingLeft: 0, color: '#595959'}, 
-						axisLabel: {fontSize: '20px', padding: 30, fontWeight: 900}}}
+						tickLabels: { angle: -45, paddingLeft: 0, color: '#595959' },
+						axisLabel: { fontSize: '20px', padding: 30, fontWeight: 900 }
+					}}
 				/>
-				<VictoryAxis 
-				style={{
-					tickLabels: {color: '#595959'}, 
-					axisLabel: {paddingTop: 30, fontSize: '20px', fontWeight: 'bold'}}}
-				label="Day" />
+				<VictoryAxis
+					style={{
+						tickLabels: { color: '#595959' },
+						axisLabel: { paddingTop: 30, fontSize: '20px', fontWeight: 'bold' }
+					}}
+					label="Day"
+				/>
 			</VictoryChart>
 		</div>
 	);

@@ -18,7 +18,15 @@ function DataProcess({ data, region, fetchProps }) {
 	const [ currentGraphResult, currentGraphResultSet ] = useState({});
 
 	let possibleKeys = Object.keys(data[0]);
-	let noGoKeys = [ 'positiveScore', 'states', 'date' ];
+	let noGoKeys = [
+		'positiveScore',
+		'states',
+		'date',
+		'score',
+		'negativeScore',
+		'negativeRegularScore',
+		'commercialScore'
+	];
 	let filteredKeys = possibleKeys.filter((key) => typeof data[0][key] === 'number' && !noGoKeys.includes(key));
 
 	const mappedData = data
