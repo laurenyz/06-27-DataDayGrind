@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import DataProcess from './DataProcess.component';
+import Resources from './Resources.component';
 
-function Board({ url, region, fetchProps }) {
+function Board({ url, region, fetchProps, abbrv }) {
 	const [ fetchResult, fetchResultSet ] = useState(undefined);
+	const [ stateInfo, stateInfoSet ] = useState(undefined);
 
 	useEffect(
 		() => {
@@ -10,6 +12,12 @@ function Board({ url, region, fetchProps }) {
 				fetch(url).then((response) => response.json()).then((json) => fetchResultSet(json));
 			};
 			fetchData();
+			const stateInfo = () => {
+				fetch('https://covidtracking.com/api/v1/states/info.json')
+					.then((response) => response.json())
+					.then((json) => stateInfoSet(json));
+			};
+			stateInfo();
 		},
 		[ url ]
 	);
@@ -21,6 +29,9 @@ function Board({ url, region, fetchProps }) {
 	) : (
 		<div>
 			<DataProcess data={fetchResult} region={region} fetchProps={fetchProps} />
+			{region !== 'United States' ? (
+				<Resources stateData={stateInfo.filter((obj) => obj.state === abbrv)[0]} />
+			) : null}
 		</div>
 	);
 }

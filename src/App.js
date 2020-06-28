@@ -177,6 +177,7 @@ function App() {
 						url={`https://covidtracking.com/api/v1/states/${selectedState.toLowerCase()}/daily.json`}
 						region={stateTitle[selectedState]}
 						fetchProps={fetchProps}
+						abbrv={selectedState}
 					/>
 				) : (
 					<Board url={url} region="United States" fetchProps={fetchProps} />
