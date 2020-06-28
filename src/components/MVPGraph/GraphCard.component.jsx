@@ -10,7 +10,7 @@ function GraphCard({ graphResult, region }) {
 	if (graphResult.Linear) {
 		Linear = graphResult.Linear;
 		Exponential = graphResult.Exponential;
-		if (Math.abs(Linear.r2) > Math.abs(Exponential) || isNaN(Exponential.r2)) {
+		if (Math.abs(Linear.r2) > Math.abs(Exponential.r2) || isNaN(Exponential.r2) || Exponential.equation[1]===0 ) {
 			type = 'Linear';
 			chosen = Linear;
 		} else {

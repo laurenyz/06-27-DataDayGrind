@@ -23,7 +23,7 @@ function Regression({
 	let graph;
 	let prediction
 	let days = isNaN(daysFromNow)? 0 : daysFromNow
-	if (Math.abs(resultlinear.r2) > Math.abs(resultexponetial) || isNaN(resultexponetial.r2)) {
+	if (Math.abs(resultlinear.r2) > Math.abs(resultexponetial.r2) || isNaN(resultexponetial.r2)) {
 		graphTypeName = 'Linear';
 		graph = resultlinear;
 		prediction = resultlinear.predict(data[0][0]+days)

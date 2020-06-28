@@ -28,7 +28,7 @@ function Navbar(){
                     <Typography>CovidTracer</Typography>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Typography>www.CovidTracer.com</Typography>
+                            <Typography>www.covidtracer.tech</Typography>
                         </Grid>
                     </Grid>
                 </Toolbar>
