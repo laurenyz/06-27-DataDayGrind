@@ -14,6 +14,10 @@ import {
 const changeDate = (day) => {
 	let someDate = new Date();
 	someDate.setDate(someDate.getDate() + day)
+	let dd = someDate.getDate();
+	let mm = someDate.getMonth() + 1;
+	let yy = someDate.getFullYear();
+	return `${dd}/${mm}/${yy}`
 }
 
 function LineGraph({ originalData, predictedData, currentFilterTerm, currentGraphType, currentGraphTypeSet }) {
@@ -24,8 +28,9 @@ function LineGraph({ originalData, predictedData, currentFilterTerm, currentGrap
 				height={500}
 				padding={{ top: 50, bottom: 50, left: 100, right: 70 }}
 				containerComponent={
+					// changeDate(datum.x)} \n ${datum.childName}: ${Math.floor(datum.y * 10000)}`
 					<VictoryVoronoiContainer
-						labels={({ datum }) => `Day: ${datum.x} \n ${datum.childName}: ${Math.floor(datum.y * 10000)}`}
+						labels={({ datum }) => `Date: ${changeDate(datum.x)} \n ${datum.childName}: ${Math.floor(datum.y *10000)}`}
 						labelComponent={<VictoryTooltip />}
 					/>
 				}
