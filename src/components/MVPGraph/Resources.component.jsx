@@ -17,12 +17,13 @@ function Resources({ stateData }) {
 							{covid19Site}
 						</Link>
 					</Typography>
-					<Typography align="justify">
+					{covid19SiteSecondary? <Typography align="justify">
 						Secondary Site:
 						<Link href={covid19SiteSecondary} target="_blank" rel="noreferrer">
 							{covid19SiteSecondary}
 						</Link>
 					</Typography>
+					: null}
 					<Typography align="justify">
 						Twitter:
 						<Link href={`https://twitter.com/${twitter}`} target="_blank" rel="noreferrer">
