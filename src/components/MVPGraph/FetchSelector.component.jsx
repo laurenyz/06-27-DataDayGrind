@@ -1,7 +1,9 @@
-import React from 'react';
-import { Button, Select } from '@material-ui/core';
+import React,  { useState } from 'react';
+import { Button, Select, Typography } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid'
 
 function FetchSelector({ handleCountryClick, selectedState, handleChange }) {
+	const [ disabled, disabledSet ] = useState(true);
 	const states = [
 		'AL',
 		'AK',
@@ -63,21 +65,39 @@ function FetchSelector({ handleCountryClick, selectedState, handleChange }) {
 		'WI',
 		'WY'
 	];
+	function handleButtonOnClick(event){
+		disabledSet(true)
+		handleCountryClick(event)
+	}
+
+	function handleSelectOnChange(event){
+		disabledSet(false)
+		handleChange(event)
+	}
 	return (
 		<div>
-			<Button variant="contained" onClick={handleCountryClick}>
-				USA
-			</Button>
-			<Select style={{ marginBottom: '20x' }} native value={selectedState} onChange={handleChange}>
-				<option value={''}>STATES</option>
-				{states.map((state, index) => {
-					return (
-						<option value={state} key={index}>
-							{state}
-						</option>
-					);
-				})}
-			</Select>
+			<Grid container justify="center" spacing={2}>
+				<Grid item>
+					<Button disabled={disabled} variant="contained" onClick={(event)=>handleButtonOnClick(event)}>
+						<Typography>USA</Typography>
+					</Button>
+				</Grid>
+				<Grid item>
+					<Select style={{ marginBottom: '20x' }} native value={selectedState} onChange={(event)=>handleSelectOnChange(event)}>
+						<option value={''}>STATES</option>
+						{states.map((state, index) => {
+							return (
+								<option value={state} key={index}>
+									{state}
+								</option>
+							);
+						})}
+					</Select>
+				</Grid>
+
+			</Grid>
+			
+			
 		</div>
 	);
 }
