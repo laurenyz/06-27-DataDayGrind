@@ -29,7 +29,7 @@ function LineGraph({ originalData, predictedData, currentFilterTerm, currentGrap
 			<VictoryChart
 				width={1000}
 				height={500}
-				style={{ parent: { marginLeft: '2em' } }}
+				// style={{ parent: { marginLeft: '-10px'  } }}
 				containerComponent={
 					// <VictoryZoomContainer
 					// responsive={false}
@@ -76,9 +76,16 @@ function LineGraph({ originalData, predictedData, currentFilterTerm, currentGrap
 					label={`Number of ${currentFilterTerm
 						.replace(/([A-Z]+)*([A-Z][a-z])/g, '$1 $2')
 						.toUpperCase()} Cases (x 10,000)`}
-					axisLabelComponent={<VictoryLabel dy={-12} />}
+					axisLabelComponent={<VictoryLabel style={{margin: '20em'}}/>}
+					style={{
+						tickLabels: {angle: -45, paddingLeft: 0, color: '#595959'}, 
+						axisLabel: {fontSize: '20px', padding: 30, fontWeight: 900}}}
 				/>
-				<VictoryAxis label="Day" />
+				<VictoryAxis 
+				style={{
+					tickLabels: {color: '#595959'}, 
+					axisLabel: {paddingTop: 30, fontSize: '20px', fontWeight: 'bold'}}}
+				label="Day" />
 			</VictoryChart>
 		</div>
 	);

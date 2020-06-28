@@ -18,7 +18,7 @@ const theme = createMuiTheme({
       },
     typography: {
       fontFamily: [
-        "Open Sans",
+        "Inconsolata",
         'sans-serif',
       ].join(','),
     },
