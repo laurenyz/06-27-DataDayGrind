@@ -46,6 +46,7 @@ function DataProcess({ data, region, fetchProps }) {
 			return [ daysIntoYear(date) + 1, dataObj[currentFilterTerm] ];
 		})
 		.filter((dataArr) => dataArr[1] != null && dataArr[1] !== 0); //Filters out points where data is null
+	
 
 	const handleChange = (e) => {
 		currentGraphTypeSet(e.target.value);
@@ -112,6 +113,7 @@ function DataProcess({ data, region, fetchProps }) {
 							currentFilterTerm={currentFilterTerm}
 							currentGraphType={currentGraphType}
 							currentGraphTypeSet={currentGraphTypeSet}
+							daysFromNow={currentPredictionDays}
 						/>
 					</Paper>
 				</Grid>

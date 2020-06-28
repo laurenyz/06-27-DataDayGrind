@@ -8,7 +8,8 @@ function Regression({
 	currentGraphType,
 	currentGraphTypeSet,
 	currentGraphResultSet,
-	region
+	region,
+	daysFromNow
 }) {
 	// const data = [[0, 1], [32, 67], [12, 79]]
 	const data = mappedData;
@@ -19,13 +20,17 @@ function Regression({
 	// eslint-disable-next-line
 	let graphTypeName;
 	let graph;
+	let prediction
 	if (Math.abs(resultlinear.r2) > Math.abs(resultexponetial) || isNaN(resultexponetial.r2)) {
 		graphTypeName = 'Linear';
 		graph = resultlinear;
+		prediction = resultlinear.predict(data[0][0]+daysFromNow)
+		console.log(prediction)
 	} else {
 		graphTypeName = 'Exponential';
 		graph = resultexponetial;
-		graph = resultexponetial;
+		prediction = resultexponetial.predict(mappedData[0][0]+daysFromNow)
+		console.log(prediction)
 	}
 
 	var now = new Date();
@@ -59,6 +64,9 @@ function Regression({
 				currentGraphType={currentGraphType}
 				currentGraphTypeSet={currentGraphTypeSet}
 			/>
+			<div>
+				Prediction of {daysFromNow} days from now: {prediction}
+			</div>
 		</div>
 	);
 }
