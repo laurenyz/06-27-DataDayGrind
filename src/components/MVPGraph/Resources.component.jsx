@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 
 function Resources({ stateData }) {
 	const { covid19Site, covid19SiteSecondary, twitter, notes } = stateData;
-	console.log(stateData);
 
 	// const preventDefault = (event) => event.preventDefault();
 	return (

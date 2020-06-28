@@ -84,7 +84,7 @@ function DataProcess({ data, region, fetchProps }) {
 			<Typography style={{ color: '#424242' }} variant="h5">
 				For {region}
 			</Typography>
-			<Grid alignItems='center' container direction="row" spacing={2} style={{ marginTop: '20px' }}>
+			<Grid alignItems="center" container direction="row" spacing={2} style={{ marginTop: '20px' }}>
 				<Grid item xs={8}>
 					<Paper variant="outlined">
 						<Regression
@@ -97,48 +97,44 @@ function DataProcess({ data, region, fetchProps }) {
 					</Paper>
 				</Grid>
 				<Grid item xs={4}>
-					<Grid justify='space-between' container direction="column" spacing={3}>
-
+					<Grid justify="space-between" container direction="column" spacing={3}>
 						<Grid item>
-						{/* <Paper variant="outlined" style={{padding: "10px"}}> */}
+							{/* <Paper variant="outlined" style={{padding: "10px"}}> */}
 							<FetchSelector {...fetchProps} />
-						{/* </Paper> */}
+							{/* </Paper> */}
 						</Grid>
 
 						<Grid item>
-
-						
-						<Paper variant="outlined" style={{padding: "10px"}}>
-						<Grid item>
-							<Filter
-								currentFilterTerm={currentFilterTerm}
-								currentFilterTermSet={currentFilterTermSet}
-								filteredKeys={filteredKeys}
-							/>
-						</Grid>
-						<Grid item>
-							
-							<FormControl component="fieldset">
-								<RadioGroup
-									row
-									style={{ color: '#424242' }}
-									aria-label="gender"
-									name="gender1"
-									value={currentGraphType}
-									onChange={handleChange}
-								>
-									<FormControlLabel value={'scatter'} control={<Radio />} label="Scatter" />
-									<FormControlLabel value={'line'} control={<Radio />} label="Line" />
-									<FormControlLabel value={'bar'} control={<Radio />} label="Bar" />
-								</RadioGroup>
-							</FormControl>
-						</Grid>
+							<Paper variant="outlined" style={{ padding: '10px' }}>
+								<Grid item>
+									<Filter
+										currentFilterTerm={currentFilterTerm}
+										currentFilterTermSet={currentFilterTermSet}
+										filteredKeys={filteredKeys}
+									/>
+								</Grid>
+								<Grid item>
+									<FormControl component="fieldset">
+										<RadioGroup
+											row
+											style={{ color: '#424242' }}
+											aria-label="gender"
+											name="gender1"
+											value={currentGraphType}
+											onChange={handleChange}
+										>
+											<FormControlLabel value={'scatter'} control={<Radio />} label="Scatter" />
+											<FormControlLabel value={'line'} control={<Radio />} label="Line" />
+											<FormControlLabel value={'bar'} control={<Radio />} label="Bar" />
+										</RadioGroup>
+									</FormControl>
+								</Grid>
 							</Paper>
 						</Grid>
 
 						<Grid item>
-							<Paper variant="outlined" style={{padding: "10px"}}>
-								<GraphCard graphResult={currentGraphResult} />
+							<Paper variant="outlined" style={{ padding: '10px' }}>
+								<GraphCard graphResult={currentGraphResult} region={region} />
 							</Paper>
 						</Grid>
 					</Grid>

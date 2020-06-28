@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { addStyles, StaticMathField } from 'react-mathquill';
 import Typography from '@material-ui/core/Typography';
 
 addStyles();
 
 function GraphCard({ graphResult }) {
-	const [ graphCard, graphCardSet ] = useState(undefined);
-	useEffect(
-		() => {
-			graphCardSet(graphResult);
-		},
-		[ graphResult ]
-	);
-
 	if (graphResult.Linear) {
 		const { Linear, Exponential } = graphResult;
 
