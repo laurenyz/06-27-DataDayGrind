@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
 	VictoryBar,
 	VictoryScatter,
 	VictoryChart,
-	VictoryZoomContainer,
 	VictoryLine,
 	VictoryAxis,
 	VictoryLabel,
@@ -12,18 +11,12 @@ import {
 	VictoryTooltip
 } from 'victory';
 
+const changeDate = (day) => {
+	let someDate = new Date();
+	someDate.setDate(someDate.getDate() + day)
+}
+
 function LineGraph({ originalData, predictedData, currentFilterTerm, currentGraphType, currentGraphTypeSet }) {
-	const [ selectedDomain, selectedDomainSet ] = useState(undefined);
-	const [ zoomDomain, zoomDomainSet ] = useState(undefined);
-
-	const handleZoom = (domain) => {
-		selectedDomainSet(domain);
-	};
-
-	const handleBrush = (domain) => {
-		zoomDomainSet(domain);
-	};
-	console.log(currentFilterTerm);
 	return (
 		<div>
 			<VictoryChart
@@ -31,12 +24,6 @@ function LineGraph({ originalData, predictedData, currentFilterTerm, currentGrap
 				height={500}
 				padding={{ top: 50, bottom: 50, left: 100, right: 70 }}
 				containerComponent={
-					// <VictoryZoomContainer
-					// responsive={false}
-					// zoomDimension='x'
-					// zoomDomain={zoomDomain}
-					// onZoomDomainChange={handleZoom}
-					// />,
 					<VictoryVoronoiContainer
 						labels={({ datum }) => `Day: ${datum.x} \n ${datum.childName}: ${Math.floor(datum.y * 10000)}`}
 						labelComponent={<VictoryTooltip />}

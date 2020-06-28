@@ -32,6 +32,7 @@ function DataProcess({ data, region, fetchProps }) {
 	const mappedData = data
 		.map((dataObj) => {
 			let date = new Date(dataObj.dateChecked);
+			console.log(new Date)
 			function daysIntoYear(date) {
 				return (
 					(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) /
@@ -84,7 +85,7 @@ function DataProcess({ data, region, fetchProps }) {
 			<Typography style={{ color: '#424242' }} variant="h5">
 				For {region}
 			</Typography>
-			<Grid container direction="row" spacing={2} style={{ marginTop: '20px' }}>
+			<Grid alignItems='center' container direction="row" spacing={2} style={{ marginTop: '20px' }}>
 				<Grid item xs={8}>
 					<Paper variant="outlined">
 						<Regression
@@ -97,10 +98,18 @@ function DataProcess({ data, region, fetchProps }) {
 					</Paper>
 				</Grid>
 				<Grid item xs={4}>
-					<Grid container direction="column" spacing={2}>
+					<Grid justify='space-between' container direction="column" spacing={3}>
+
 						<Grid item>
+						<Paper variant="outlined">
 							<FetchSelector {...fetchProps} />
+						</Paper>
 						</Grid>
+
+						<Grid item>
+
+						
+						<Paper variant="outlined">
 						<Grid item>
 							<Filter
 								currentFilterTerm={currentFilterTerm}
@@ -109,6 +118,7 @@ function DataProcess({ data, region, fetchProps }) {
 							/>
 						</Grid>
 						<Grid item>
+							
 							<FormControl component="fieldset">
 								<RadioGroup
 									row
@@ -123,6 +133,8 @@ function DataProcess({ data, region, fetchProps }) {
 									<FormControlLabel value={'bar'} control={<Radio />} label="Bar" />
 								</RadioGroup>
 							</FormControl>
+						</Grid>
+							</Paper>
 						</Grid>
 
 						<Grid item>
