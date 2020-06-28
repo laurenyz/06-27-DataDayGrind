@@ -1,50 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { addStyles, StaticMathField } from 'react-mathquill';
 import Typography from '@material-ui/core/Typography';
 
 addStyles();
 
-function GraphCard({ graphResult }) {
-	const [ graphCard, graphCardSet ] = useState(undefined);
-	useEffect(
-		() => {
-			graphCardSet(graphResult);
-		},
-		[ graphResult ]
-	);
+function GraphCard({ graphResult, region }) {
+	let Linear, Exponential, type, chosen;
 
 	if (graphResult.Linear) {
-		const { Linear, Exponential } = graphResult;
-
-		let type;
-		let chosen;
+		Linear = graphResult.Linear;
+		Exponential = graphResult.Exponential;
 		if (Math.abs(Linear.r2) > Math.abs(Exponential) || isNaN(Exponential.r2)) {
 			type = 'Linear';
 			chosen = Linear;
 		} else {
 			type = 'Exponential';
 			chosen = Exponential;
-			chosen = Exponential;
 		}
-
-		return (
-			<div>
-				<Typography>Graph Type: {type}</Typography>
-				<div>
-					<StaticMathField>{`r^2 = ${chosen.r2}`}</StaticMathField>
-				</div>
-				<div>
-					{type === 'Linear' ? (
-						<StaticMathField>{`y = ${chosen.equation[0]}x+${chosen.equation[1]}`}</StaticMathField>
-					) : (
-						<StaticMathField>{`y = ${chosen.equation[0]}x^{\n${chosen.equation[1]}}`}</StaticMathField>
-					)}
-				</div>
-			</div>
-		);
-	} else {
-		return <div>No Data</div>;
 	}
+
+	return Linear ? (
+		<div>
+			<Typography>Graph Type: {type}</Typography>
+			<div>
+				<StaticMathField>{`r^2 = ${chosen.r2}`}</StaticMathField>
+			</div>
+			<div>
+				{type === 'Linear' ? (
+					<StaticMathField>{`y = ${chosen.equation[0]}x+${chosen.equation[1]}`}</StaticMathField>
+				) : (
+					<StaticMathField>{`y = ${chosen.equation[0]}x^{\n${chosen.equation[1]}}`}</StaticMathField>
+				)}
+			</div>
+		</div>
+	) : (
+		<div>No Data</div>
+	);
 }
 
 export default GraphCard;

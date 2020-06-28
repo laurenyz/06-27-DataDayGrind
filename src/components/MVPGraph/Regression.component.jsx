@@ -2,13 +2,21 @@ import React, { useEffect } from 'react';
 import regression from 'regression';
 import LineGraph from './LineGraph.component';
 
-function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGraphTypeSet, currentGraphResultSet }) {
+function Regression({
+	mappedData,
+	currentFilterTerm,
+	currentGraphType,
+	currentGraphTypeSet,
+	currentGraphResultSet,
+	region
+}) {
 	// const data = [[0, 1], [32, 67], [12, 79]]
 	const data = mappedData;
 	const resultlinear = regression.linear(data);
 	// console.log('linear equation:', resultlinear.string, resultlinear.r2, resultlinear);
 	const resultexponetial = regression.exponential(data);
 	// console.log('exponentional equation:', resultexponetial.string, resultexponetial.r2, resultexponetial);
+	// eslint-disable-next-line
 	let graphTypeName;
 	let graph;
 	if (Math.abs(resultlinear.r2) > Math.abs(resultexponetial) || isNaN(resultexponetial.r2)) {
@@ -25,13 +33,13 @@ function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGr
 	var diff = now - start + (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000;
 	var oneDay = 1000 * 60 * 60 * 24;
 	var day = Math.floor(diff / oneDay);
-
 	useEffect(
 		() => {
 			let data = { Linear: resultlinear, Exponential: resultexponetial };
 			currentGraphResultSet(data);
 		},
-		[ currentFilterTerm ]
+		// eslint-disable-next-line
+		[ currentFilterTerm, region ]
 	);
 
 	return (

@@ -1,9 +1,6 @@
 import React from 'react';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
 
 function Filter({ filteredKeys, currentFilterTerm, currentFilterTermSet }) {
 	const handleChange = (e) => {

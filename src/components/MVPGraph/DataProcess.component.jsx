@@ -14,7 +14,6 @@ import TextField from '@material-ui/core/TextField'
 
 function DataProcess({ data, region, fetchProps }) {
 	const [ currentFilterTerm, currentFilterTermSet ] = useState('positive');
-
 	const [ currentGraphType, currentGraphTypeSet ] = useState('scatter');
 	const [ currentGraphResult, currentGraphResultSet ] = useState({});
 	const [currentPredictionDays, currentPredictionDaysSet] = useState(1);
@@ -103,12 +102,13 @@ function DataProcess({ data, region, fetchProps }) {
 			<Typography style={{ color: '#424242' }} variant="h5">
 				For {region}
 			</Typography>
-			<Grid alignItems='center' container direction="row" spacing={2} style={{ marginTop: '20px' }}>
+			<Grid alignItems="center" container direction="row" spacing={2} style={{ marginTop: '20px' }}>
 				<Grid item xs={8}>
 					<Paper variant="outlined">
 						<Regression
 							mappedData={mappedData}
 							currentGraphResultSet={currentGraphResultSet}
+							region={region}
 							currentFilterTerm={currentFilterTerm}
 							currentGraphType={currentGraphType}
 							currentGraphTypeSet={currentGraphTypeSet}
@@ -116,12 +116,11 @@ function DataProcess({ data, region, fetchProps }) {
 					</Paper>
 				</Grid>
 				<Grid item xs={4}>
-					<Grid justify='space-between' container direction="column" spacing={3}>
-
+					<Grid justify="space-between" container direction="column" spacing={3}>
 						<Grid item>
-						{/* <Paper variant="outlined" style={{padding: "10px"}}> */}
+							{/* <Paper variant="outlined" style={{padding: "10px"}}> */}
 							<FetchSelector {...fetchProps} />
-						{/* </Paper> */}
+							{/* </Paper> */}
 						</Grid>
 
 						<Grid item>
@@ -156,8 +155,8 @@ function DataProcess({ data, region, fetchProps }) {
 						</Grid>
 
 						<Grid item>
-							<Paper variant="outlined" style={{padding: "10px"}}>
-								<GraphCard graphResult={currentGraphResult} />
+							<Paper variant="outlined" style={{ padding: '10px' }}>
+								<GraphCard graphResult={currentGraphResult} region={region} />
 							</Paper>
 						</Grid>
 						<Grid item>
