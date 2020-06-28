@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Select } from '@material-ui/core';
+
 import './App.css';
 import Board from './components/MVPGraph/Board.component';
 import Navbar from './components/MVPGraph/Navbar.component';
@@ -26,67 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
 	const classes = useStyles();
-	const states = [
-		'AL',
-		'AK',
 
-		'AZ',
-		'AR',
-		'CA',
-		'CO',
-		'CT',
-		'DE',
-		'DC',
-
-		'FL',
-		'GA',
-
-		'HI',
-		'ID',
-		'IL',
-		'IN',
-		'IA',
-		'KS',
-		'KY',
-		'LA',
-		'ME',
-
-		'MD',
-		'MA',
-		'MI',
-		'MN',
-		'MS',
-		'MO',
-		'MT',
-		'NE',
-		'NV',
-		'NH',
-		'NJ',
-		'NM',
-		'NY',
-		'NC',
-		'ND',
-		'MP',
-		'OH',
-		'OK',
-		'OR',
-
-		'PA',
-		'PR',
-		'RI',
-		'SC',
-		'SD',
-		'TN',
-		'TX',
-		'UT',
-		'VT',
-		'VI',
-		'VA',
-		'WA',
-		'WV',
-		'WI',
-		'WY'
-	];
 	const stateTitle = {
 		AL: 'Alabama',
 		AK: 'Alaska',
