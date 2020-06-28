@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import regression from 'regression';
 import LineGraph from './LineGraph.component';
+import Typography from '@material-ui/core/Typography'
 
 function Regression({
 	mappedData,
@@ -12,6 +13,7 @@ function Regression({
 	daysFromNow
 }) {
 	// const data = [[0, 1], [32, 67], [12, 79]]
+	const [prediction, predictionSet] = useState(null)
 	const data = mappedData;
 	const resultlinear = regression.linear(data);
 	// console.log('linear equation:', resultlinear.string, resultlinear.r2, resultlinear);
@@ -20,17 +22,23 @@ function Regression({
 	// eslint-disable-next-line
 	let graphTypeName;
 	let graph;
-	let prediction
+	let predictionVar
 	if (Math.abs(resultlinear.r2) > Math.abs(resultexponetial) || isNaN(resultexponetial.r2)) {
 		graphTypeName = 'Linear';
 		graph = resultlinear;
-		prediction = resultlinear.predict(data[0][0]+daysFromNow)
-		console.log(prediction)
+		predictionVar = resultlinear.predict(data[0][0]+daysFromNow)
+		console.log(typeof data[0][0])
+		console.log(typeof daysFromNow)
+		// predictionSet(predictionVar)
+		// console.log(predictionVar)
 	} else {
 		graphTypeName = 'Exponential';
 		graph = resultexponetial;
-		prediction = resultexponetial.predict(mappedData[0][0]+daysFromNow)
-		console.log(prediction)
+		predictionVar = resultexponetial.predict(mappedData[0][0]+daysFromNow)
+		console.log(typeof data[0][0])
+		console.log(typeof daysFromNow)
+		// predictionSet(predictionVar)
+		// console.log(predictionVar)
 	}
 
 	var now = new Date();
@@ -46,8 +54,9 @@ function Regression({
 		// eslint-disable-next-line
 		[ currentFilterTerm, region ]
 	);
-
+	console.log(predictionVar[1])
 	return (
+		
 		<div>
 			<LineGraph
 				originalData={mappedData
@@ -64,9 +73,7 @@ function Regression({
 				currentGraphType={currentGraphType}
 				currentGraphTypeSet={currentGraphTypeSet}
 			/>
-			<div>
-				Prediction of {daysFromNow} days from now: {prediction}
-			</div>
+			<Typography style={{margin:"20px"}}>Prediction of {daysFromNow} day(s) from now: {Math.floor(predictionVar[1])}</Typography>
 		</div>
 	);
 }

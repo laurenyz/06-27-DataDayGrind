@@ -53,7 +53,7 @@ function DataProcess({ data, region, fetchProps }) {
 	};
 
 	const handleOnChangeCurrentPredictionDays = (e) => {
-		let days = e.target.value;
+		let days = parseInt(e.target.value);
 		if (days < 0) {
 			days = 0
 		} else if (days > 31) {
