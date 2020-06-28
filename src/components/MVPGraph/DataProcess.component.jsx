@@ -13,7 +13,6 @@ import FetchSelector from './FetchSelector.component';
 
 function DataProcess({ data, region, fetchProps }) {
 	const [ currentFilterTerm, currentFilterTermSet ] = useState('positive');
-
 	const [ currentGraphType, currentGraphTypeSet ] = useState('scatter');
 	const [ currentGraphResult, currentGraphResultSet ] = useState({});
 
@@ -90,6 +89,7 @@ function DataProcess({ data, region, fetchProps }) {
 						<Regression
 							mappedData={mappedData}
 							currentGraphResultSet={currentGraphResultSet}
+							region={region}
 							currentFilterTerm={currentFilterTerm}
 							currentGraphType={currentGraphType}
 							currentGraphTypeSet={currentGraphTypeSet}

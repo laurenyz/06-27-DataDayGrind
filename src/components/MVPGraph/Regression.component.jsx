@@ -2,7 +2,14 @@ import React, { useEffect } from 'react';
 import regression from 'regression';
 import LineGraph from './LineGraph.component';
 
-function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGraphTypeSet, currentGraphResultSet }) {
+function Regression({
+	mappedData,
+	currentFilterTerm,
+	currentGraphType,
+	currentGraphTypeSet,
+	currentGraphResultSet,
+	region
+}) {
 	// const data = [[0, 1], [32, 67], [12, 79]]
 	const data = mappedData;
 	const resultlinear = regression.linear(data);
@@ -32,7 +39,7 @@ function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGr
 			currentGraphResultSet(data);
 		},
 		// eslint-disable-next-line
-		[ currentFilterTerm ]
+		[ currentFilterTerm, region ]
 	);
 
 	return (
