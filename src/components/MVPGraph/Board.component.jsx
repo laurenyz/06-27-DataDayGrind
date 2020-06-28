@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataProcess from './DataProcess.component';
 
-
-function Board({ url }) {
+function Board({ url, region }) {
 	const [ fetchResult, fetchResultSet ] = useState(undefined);
 
 	useEffect(
@@ -21,7 +20,7 @@ function Board({ url }) {
 		<div>Data Load Error</div>
 	) : (
 		<div>
-			<DataProcess data={fetchResult} />
+			<DataProcess data={fetchResult} region={region} />
 		</div>
 	);
 }

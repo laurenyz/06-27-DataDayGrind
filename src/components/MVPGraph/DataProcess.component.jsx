@@ -10,7 +10,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 
-function DataProcess({ data }) {
+function DataProcess({ data, region }) {
 	const [ currentFilterTerm, currentFilterTermSet ] = useState('positive');
 
 	const [ currentGraphType, currentGraphTypeSet ] = useState('scatter');
@@ -67,8 +67,12 @@ function DataProcess({ data }) {
 
 	return (
 		<div>
-			<Typography style={{color: "#424242"}} variant="h3">{namedTitles[currentFilterTerm]}</Typography>
-			<Typography style={{color: "#424242"}} variant="h5">For the United States</Typography>
+			<Typography style={{ color: '#424242' }} variant="h3">
+				{namedTitles[currentFilterTerm]}
+			</Typography>
+			<Typography style={{ color: '#424242' }} variant="h5">
+				For {region}
+			</Typography>
 			<Grid container direction="row" spacing={2} style={{ marginTop: '20px' }}>
 				<Grid item xs={8}>
 					<Paper variant="outlined">
@@ -87,7 +91,7 @@ function DataProcess({ data }) {
 							<FormControl component="fieldset">
 								<RadioGroup
 									row
-									style={{color: "#424242"}}
+									style={{ color: '#424242' }}
 									aria-label="gender"
 									name="gender1"
 									value={currentGraphType}
