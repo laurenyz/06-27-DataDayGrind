@@ -49,7 +49,7 @@ function DataProcess({ data, region, fetchProps }) {
 	const handleChange = (e) => {
 		currentGraphTypeSet(e.target.value);
 	};
-	console.log(filteredKeys);
+
 	const namedTitles = {
 		positive: 'Confirmed Cumulative Positive Cases',
 		negative: 'Negative Cases',

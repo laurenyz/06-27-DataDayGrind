@@ -20,6 +20,12 @@ function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGr
 		graph = resultexponetial;
 	}
 
+	var now = new Date();
+	var start = new Date(now.getFullYear(), 0, 0);
+	var diff = now - start + (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000;
+	var oneDay = 1000 * 60 * 60 * 24;
+	var day = Math.floor(diff / oneDay);
+	console.log(day);
 	useEffect(
 		() => {
 			let data = { Linear: resultlinear, Exponential: resultexponetial };
@@ -31,12 +37,16 @@ function Regression({ mappedData, currentFilterTerm, currentGraphType, currentGr
 	return (
 		<div>
 			<LineGraph
-				originalData={mappedData.map((data) => {
-					return { x: data[0], y: data[1] / 10000 };
-				})}
-				predictedData={graph.points.map((data) => {
-					return { x: data[0], y: data[1] / 10000 };
-				})}
+				originalData={mappedData
+					.map((data) => {
+						return { x: data[0], y: data[1] / 10000 };
+					})
+					.filter((data) => data.x < day)}
+				predictedData={graph.points
+					.map((data) => {
+						return { x: data[0], y: data[1] / 10000 };
+					})
+					.filter((data) => data.x < day)}
 				currentFilterTerm={currentFilterTerm}
 				currentGraphType={currentGraphType}
 				currentGraphTypeSet={currentGraphTypeSet}

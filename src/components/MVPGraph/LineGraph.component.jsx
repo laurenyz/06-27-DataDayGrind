@@ -23,13 +23,13 @@ function LineGraph({ originalData, predictedData, currentFilterTerm, currentGrap
 	const handleBrush = (domain) => {
 		zoomDomainSet(domain);
 	};
-
+	console.log(originalData);
 	return (
 		<div>
 			<VictoryChart
 				width={1000}
 				height={500}
-				padding={{top:50, bottom: 50, left: 100, right: 70}}
+				padding={{ top: 50, bottom: 50, left: 100, right: 70 }}
 				containerComponent={
 					// <VictoryZoomContainer
 					// responsive={false}
