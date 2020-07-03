@@ -15,7 +15,7 @@ function Regression({
 	// const data = [[0, 1], [32, 67], [12, 79]]
 	const data = mappedData;
 	const resultlinear = regression.linear(data, {precision: 3});
-	const resultexponetial = regression.exponential(data, {precision: 20});
+	const resultexponetial = regression.exponential(data, {precision: 3});
 	const resultlogarithmic = regression.logarithmic(data, {precision: 3})
 	const resultpower = regression.power(data, {precision: 3})
 	
