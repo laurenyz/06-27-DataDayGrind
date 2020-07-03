@@ -5,17 +5,31 @@ import Typography from '@material-ui/core/Typography';
 addStyles();
 
 function GraphCard({ graphResult, region }) {
-	let Linear, Exponential, type, chosen;
+	let Linear, Exponential, Logarithmic, Power, type, chosen, displayEquation;
 
 	if (graphResult.Linear) {
 		Linear = graphResult.Linear;
 		Exponential = graphResult.Exponential;
-		if (Math.abs(Linear.r2) > Math.abs(Exponential.r2) || isNaN(Exponential.r2) || Exponential.equation[1]===0 ) {
-			type = 'Linear';
-			chosen = Linear;
+		Logarithmic = graphResult.Logarithmic;
+		Power = graphResult.Power;
+
+		let maximum = Math.max(Math.abs(Logarithmic.r2), Math.abs(Exponential.r2), Math.abs(Linear.r2), Math.abs(Power.r2))
+		if (Math.abs(Linear.r2) === maximum){
+			type = "Linear"
+			chosen = Linear
+			displayEquation = `y = ${chosen.equation[0]}x+${chosen.equation[1]}`
+		} else if (Math.abs(Exponential.r2) === maximum){
+			type = "Exponential"
+			chosen = Exponential
+			displayEquation = `y = ${chosen.equation[0]}e^{\n${chosen.equation[1]}x}`
+		} else if (Math.abs(Power.r2) === maximum){
+			type = "Power"
+			chosen = Power
+			displayEquation = `y = ${chosen.equation[0]}x^{\n${chosen.equation[1]}}`
 		} else {
-			type = 'Exponential';
-			chosen = Exponential;
+			type = 'Logarithmic'
+			chosen = Logarithmic
+			displayEquation = `y = ${chosen.equation[0]}+${chosen.equation[1]}ln(x)`
 		}
 	}
 
@@ -26,11 +40,7 @@ function GraphCard({ graphResult, region }) {
 				<StaticMathField>{`r^2 = ${chosen.r2}`}</StaticMathField>
 			</div>
 			<div>
-				{type === 'Linear' ? (
-					<StaticMathField>{`y = ${chosen.equation[0]}x+${chosen.equation[1]}`}</StaticMathField>
-				) : (
-					<StaticMathField>{`y = ${chosen.equation[0]}x^{\n${chosen.equation[1]}}`}</StaticMathField>
-				)}
+				<StaticMathField>{displayEquation}</StaticMathField>
 			</div>
 		</div>
 	) : (

@@ -7,7 +7,6 @@ function FetchSelector({ handleCountryClick, selectedState, handleChange }) {
 	const states = [
 		'AL',
 		'AK',
-
 		'AZ',
 		'AR',
 		'CA',
@@ -15,10 +14,8 @@ function FetchSelector({ handleCountryClick, selectedState, handleChange }) {
 		'CT',
 		'DE',
 		'DC',
-
 		'FL',
 		'GA',
-
 		'HI',
 		'ID',
 		'IL',
@@ -28,7 +25,6 @@ function FetchSelector({ handleCountryClick, selectedState, handleChange }) {
 		'KY',
 		'LA',
 		'ME',
-
 		'MD',
 		'MA',
 		'MI',
@@ -48,7 +44,6 @@ function FetchSelector({ handleCountryClick, selectedState, handleChange }) {
 		'OH',
 		'OK',
 		'OR',
-
 		'PA',
 		'PR',
 		'RI',
