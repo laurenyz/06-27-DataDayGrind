@@ -7,20 +7,28 @@ function Resources({ stateData }) {
 	const { covid19Site, covid19SiteSecondary, twitter, notes } = stateData;
 
 	// const preventDefault = (event) => event.preventDefault();
+
+	function truncateString(str, num) {
+		if (str.length <= num) {
+		  return str
+		}
+		return str.slice(0, num) + '...'
+	  }
+
 	return (
 		<div>
 			<Paper style={{ padding: '20px' }}>
 				<Typography align="justify">
 					Primary Site:
 					<Link href={covid19Site} target="_blank" rel="noreferrer">
-						{covid19Site}
+						{truncateString(covid19Site, 120)}
 					</Link>
 				</Typography>
 				{covid19SiteSecondary ? (
 					<Typography align="justify">
 						Secondary Site:
 						<Link href={covid19SiteSecondary} target="_blank" rel="noreferrer">
-							{covid19SiteSecondary}
+							{truncateString(covid19SiteSecondary, 120)}
 						</Link>
 					</Typography>
 				) : null}
