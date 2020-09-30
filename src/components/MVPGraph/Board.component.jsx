@@ -14,7 +14,7 @@ function Board({ url, region, fetchProps, abbrv }) {
 			};
 			fetchData();
 			const stateInfo = () => {
-				fetch('https://covidtracking.com/api/v1/states/info.json')
+				fetch('https://api.covidtracking.com/v1/states/info.json')
 					.then((response) => response.json())
 					.then((json) => stateInfoSet(json));
 			};

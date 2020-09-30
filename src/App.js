@@ -90,7 +90,7 @@ function App() {
 	};
 	const [ selectedState, selectedStateSet ] = useState('');
 	const [ stateView, stateViewSet ] = useState(false);
-	let url = 'https://covidtracking.com/api/v1/us/daily.json';
+	let url = 'https://api.covidtracking.com/v1/us/daily.json';
 
 	const handleCountryClick = () => {
 		stateViewSet(false);
@@ -114,7 +114,7 @@ function App() {
 			<Container className={classes.main}>
 				{stateView ? (
 					<Board
-						url={`https://covidtracking.com/api/v1/states/${selectedState.toLowerCase()}/daily.json`}
+						url={`https://api.covidtracking.com/v1/states/${selectedState.toLowerCase()}/daily.json`}
 						region={stateTitle[selectedState]}
 						fetchProps={fetchProps}
 						abbrv={selectedState}
